@@ -14,12 +14,25 @@ export class MainComponent implements OnInit {
 	selectedCity: City;
 	
 	constructor(private store: Store<any>) {
-		store.select('cityState')
-			.subscribe((cityState: CityState) => {
-				this.selectedCity = cityState.selectedCity;
-			})
 	}
 
 	ngOnInit() {
+		this.store.select('cityState')
+			.subscribe((cityState: CityState) => {
+				this.selectedCity = JSON.parse(JSON.stringify(cityState.selectedCity));
+			})
+	}
+
+	onSave() {
+		if (this.selectedCity.id === 0) {
+			this.store.dispatch(new CityActions.AddCity(this.selectedCity));
+		}
+		else {
+			this.store.dispatch(new CityActions.UpdateCity(this.selectedCity));
+		}
+	}
+
+	removeCity() {
+		this.store.dispatch(new CityActions.RemoveCity(this.selectedCity.id));
 	}
 }

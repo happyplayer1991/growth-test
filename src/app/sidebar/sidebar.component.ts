@@ -27,6 +27,10 @@ export class SidebarComponent implements OnInit {
 		this.store.dispatch(new CityActions.EditCity(city));
 	}
 
+	createCity() {
+		this.store.dispatch(new CityActions.CreateCity());
+	}
+
 	ngOnInit() {
 	}
 }

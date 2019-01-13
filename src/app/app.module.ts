@@ -9,6 +9,8 @@ import { cityReducer } from './store/reducers/city.reducer';
 import { environment } from '../environments/environment';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MainComponent } from './main/main.component';
+import { FormsModule } from '@angular/forms';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { MainComponent } from './main/main.component';
     StoreModule.forRoot({
       cityState: cityReducer
     }),
+    FormsModule,
+    ColorPickerModule,
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [],

@@ -1,4 +1,4 @@
-<form class="form mt-3">
+<form class="form mt-3" (ngSubmit)="onSave()" #Form="ngForm">
 	<table class="table">
 		<thead class="thead-light">
 			<tr>
@@ -10,18 +10,44 @@
 		<tbody>
 			<tr>
 				<td scope="row">{{ selectedCity && selectedCity.id }}</td>
-				<td>{{ selectedCity && selectedCity.title }}</td>
-				<td>{{ selectedCity && selectedCity.color }}</td>
+				<td>
+					<input
+						type="text"
+						name="title"
+						class="form-control"
+						[(ngModel)]="selectedCity && selectedCity.title"
+						required />
+				</td>
+				<td>
+					<div *ngIf="selectedCity">
+						<input
+							class="form-control input-color"
+							name="color"
+							[(ngModel)]="selectedCity.color"
+							[value]="selectedCity.color"
+							[style.background]="selectedCity.color"
+							[cpPosition]="'bottom'"
+							[(colorPicker)]="selectedCity.color"
+							readonly />
+					</div>
+					<div *ngIf="!selectedCity">
+						<input type="" name="" class="form-control" required="">
+					</div>
+				</td>
 			</tr>
 		</tbody>
 	</table>
 
 	<div class="form-group">
 		<label>Description</label>
-		<textarea name="description" class="form-control">{{ selectedCity && selectedCity.description }}</textarea>
+		<textarea name="description" class="form-control" [(ngModel)]="selectedCity && selectedCity.description" required></textarea>
 	</div>
 
-	<div class="text-right">
-		<button class="btn btn-success">Save</button>
+	<div class="text-right" *ngIf="selectedCity && selectedCity.id !== 0">
+		<button class="btn btn-danger mr-3" (click)="removeCity()">Remove</button>
+		<button class="btn btn-success" type="submit" [disabled]="!Form.form.valid">Save</button>
+	</div>
+	<div class="text-right" *ngIf="selectedCity && selectedCity.id === 0">
+		<button class="btn btn-success" [disabled]="!Form.form.valid">Create</button>
 	</div>
 </form>

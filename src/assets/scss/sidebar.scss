@@ -1,0 +1,39 @@
+/*
+ ======================
+  Sidebar
+ ======================
+ */
+#sidebar {
+	.cities {
+		a {
+			position: relative;
+			background-color: #eee;
+			border-bottom: 1px solid #fff;
+			text-decoration: none;
+			display: block;
+			color: #666;
+			.city-color {
+				position: absolute;
+				top: 5%;
+				left: -2px;
+				width: 4px;
+				height: 90%;
+				border-radius: 30px;
+			}
+			.city-id {
+				width: 60px;
+				display: inline-block;
+				vertical-align: top;
+			}
+			.city-title {
+				display: inline-block;
+			}
+			&.active {
+				color: #fff;
+				.city-color {
+					display: none;
+				}
+			}
+		}
+	}
+}

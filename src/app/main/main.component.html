@@ -1,0 +1,27 @@
+<form class="form mt-3">
+	<table class="table">
+		<thead class="thead-light">
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Title</th>
+				<th scope="col">Color</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td scope="row">{{ selectedCity && selectedCity.id }}</td>
+				<td>{{ selectedCity && selectedCity.title }}</td>
+				<td>{{ selectedCity && selectedCity.color }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="form-group">
+		<label>Description</label>
+		<textarea name="description" class="form-control">{{ selectedCity && selectedCity.description }}</textarea>
+	</div>
+
+	<div class="text-right">
+		<button class="btn btn-success">Save</button>
+	</div>
+</form>

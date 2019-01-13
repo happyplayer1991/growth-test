@@ -1,0 +1,14 @@
+<button class="btn btn-info mt-3">New city</button>
+
+<ul class="list-unstyled mt-3 cities">
+	<li *ngFor="let city of cities">
+		<a href="javascript:void(0)" class="px-4 py-1" (click)="selectCity(city)" [ngClass]="{'active': selectedCity && selectedCity.id === city.id}" [ngStyle]="{'background-color': selectedCity && selectedCity.id === city.id ? city.color : '#eee'}">
+			<span class="city-color" [ngStyle]="{'background-color': city.color}"></span>
+			<span class="city-id font-weight-bold">#{{ city.id }}</span>
+			<p class="city-title m-0">
+				<span class="font-weight-bold d-block">{{ city.title }}</span>
+				<span class="d-block">further details</span>
+			</p>
+		</a>
+	</li>
+</ul>

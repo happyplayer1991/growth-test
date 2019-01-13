@@ -135,5 +135,8 @@
       }
     }
   },
-  "defaultProject": "growth-test"
+  "defaultProject": "growth-test",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

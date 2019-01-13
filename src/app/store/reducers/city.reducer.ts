@@ -42,28 +42,32 @@ export function cityReducer(state: CityState = initialState, action: cityActions
         color: "",
         description: ""
       }
-      return { ...state, selectedCity }
+      return { ...state, selectedCity };
+
   	case ADD_CITY:
       let cities = state.cities;
-      let last_id = cities[cities.length - 1].id;
-      let city = action.payload;
-      city.id = ++last_id;
+      let last_id = cities.length > 0 ? cities[cities.length - 1].id : 0;
+      let city = { ...action.payload, id: ++last_id };
       selectedCity = city;
       cities = [...state.cities, city];
   		return { ...state, cities, selectedCity };
+
     case EDIT_CITY:
       return { ...state, selectedCity: action.payload };
+
     case UPDATE_CITY:
       cities = state.cities
       let update_index = cities.findIndex(c => c.id === action.payload.id);
       cities[update_index] = action.payload;
       selectedCity = cities[update_index];
       return { ...state, cities, selectedCity };
+
     case REMOVE_CITY:
       cities = state.cities;
       let remove_index = cities.findIndex(c => c.id === action.payload)
       cities.splice(remove_index, 1);
       return { ...state, cities, selectedCity: null };
+
     default:
       return state;
   }

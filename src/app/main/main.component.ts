@@ -25,14 +25,17 @@ export class MainComponent implements OnInit {
 
 	onSave() {
 		if (this.selectedCity.id === 0) {
+			// Add new city
 			this.store.dispatch(new CityActions.AddCity(this.selectedCity));
 		}
 		else {
+			// Update selected city
 			this.store.dispatch(new CityActions.UpdateCity(this.selectedCity));
 		}
 	}
 
 	removeCity() {
+		// Remove selected city
 		this.store.dispatch(new CityActions.RemoveCity(this.selectedCity.id));
 	}
 }

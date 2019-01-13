@@ -47,6 +47,7 @@
 		<button class="btn btn-danger mr-3" (click)="removeCity()">Remove</button>
 		<button class="btn btn-success" type="submit" [disabled]="!Form.form.valid">Save</button>
 	</div>
+
 	<div class="text-right" *ngIf="selectedCity && selectedCity.id === 0">
 		<button class="btn btn-success" [disabled]="!Form.form.valid">Create</button>
 	</div>
